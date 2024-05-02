@@ -1,0 +1,5 @@
+dependency_overrides:
+  visualizeit_extensions:
+    path: ../visualizeit_extensions
+#    git:
+#      url: git@github.com:it-toolkit/visualizeit_extensions.git
