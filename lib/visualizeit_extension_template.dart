@@ -6,6 +6,7 @@ import 'package:visualizeit_extensions/logging.dart';
 import 'package:visualizeit_extensions/scripting.dart';
 import 'package:visualizeit_extensions/visualizer.dart';
 import 'package:visualizeit_extensions/extension.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 final _logger = Logger("extension.fake");
 
@@ -13,10 +14,16 @@ const _extensionId = "fake-extension";
 
 class FakeExtensionBuilder implements ExtensionBuilder {
   @override
-  Extension build() {
+  Future<Extension> build() async{
     _logger.trace(() => "Building fake extension");
     var fakeExtension = FakeExtension();
-    return Extension(_extensionId, fakeExtension, fakeExtension);
+
+    const assetLocationPrefix = "packages/visualizeit_extension_template/";
+    final markdownDocs = {
+      LanguageCodes.en : await rootBundle.loadString('${assetLocationPrefix}assets/docs/en.md')
+    };
+
+    return Extension(_extensionId, fakeExtension, fakeExtension, markdownDocs);
   }
 }
 
