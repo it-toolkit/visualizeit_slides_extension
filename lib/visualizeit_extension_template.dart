@@ -6,21 +6,22 @@ import 'package:visualizeit_extensions/logging.dart';
 import 'package:visualizeit_extensions/scripting.dart';
 import 'package:visualizeit_extensions/visualizer.dart';
 import 'package:visualizeit_extensions/extension.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 final _logger = Logger("extension.fake");
 
 const _extensionId = "fake-extension";
 
 class FakeExtensionBuilder implements ExtensionBuilder {
+  static const _docsLocationPath = "packages/visualizeit_extension_template/assets/docs";
+  static const _availableDocsLanguages = [LanguageCodes.en];
+
   @override
   Future<Extension> build() async{
     _logger.trace(() => "Building fake extension");
     var fakeExtension = FakeExtension();
 
-    const assetLocationPrefix = "packages/visualizeit_extension_template/";
     final markdownDocs = {
-      LanguageCodes.en : await rootBundle.loadString('${assetLocationPrefix}assets/docs/en.md')
+      for (final languageCode in _availableDocsLanguages) languageCode : '$_docsLocationPath/$languageCode.md'
     };
 
     return Extension(_extensionId, fakeExtension, fakeExtension, markdownDocs);
