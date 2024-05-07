@@ -80,7 +80,7 @@ class FakeCommand extends ModelBuilderCommand {
   FakeCommand.build();
 
   @override
-  Model call() {
+  Model call(CommandContext context) {
     _logger.trace(() => "Calling Fake command");
     return FakeModel();
   }
