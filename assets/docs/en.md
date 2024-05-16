@@ -1,10 +1,13 @@
-# Fake extension
+# Slides extension
 
-This is the fake extension usage doc.
+This is the slides extension usage doc.
 
 ## Available commands
 
-### fake-command
+### create-slides
+
+### show-slides
+
 
 This command shows a simple banner widget with a fixed text.
 
