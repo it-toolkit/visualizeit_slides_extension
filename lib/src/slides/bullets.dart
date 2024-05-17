@@ -27,7 +27,7 @@ class BulletsSlide extends Slide {
     required List<String> bullets,
     bool bulletByBullet = false,
     BulletsImageLocation imageLocation = BulletsImageLocation.right,
-    AssetImage? image,
+    ImageProvider? image,
     WidgetBuilder? backgroundBuilder,
     String? notes,
     SlickTransition? transition,
