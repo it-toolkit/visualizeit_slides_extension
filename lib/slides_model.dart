@@ -33,8 +33,14 @@ class SlidesModel extends Model with CommandExecutionAware {
     ;
   }
 
+  void addSlide(Slide slide) {
+    slides.add(slide);
+  }
+
   static const _defaultTransition = SlickFadeTransition(color: Colors.black);
-  List<Slide> slides = [
+  List<Slide> slides = [];
+
+  List<Slide> slides2 = [
     FullScreenImageSlide(
       image: const AssetImage('packages/visualizeit_slides_extension/assets/logo-background.jpg'),
       title: 'VisualizeIT',

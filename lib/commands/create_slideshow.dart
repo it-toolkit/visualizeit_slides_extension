@@ -11,7 +11,6 @@ class CreateSlideshow extends ModelBuilderCommand {
 
   @override
   Model call(CommandContext context) {
-    // TODO: implement call
     return SlidesModel();
   }
 }

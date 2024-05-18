@@ -6,6 +6,9 @@ import 'package:visualizeit_extensions/logging.dart';
 import 'package:visualizeit_extensions/scripting.dart';
 import 'package:visualizeit_extensions/visualizer.dart';
 import 'package:visualizeit_extensions/extension.dart';
+import 'package:visualizeit_slides_extension/commands/add_bullets_slide.dart';
+import 'package:visualizeit_slides_extension/commands/add_code_slide.dart';
+import 'package:visualizeit_slides_extension/commands/add_fullscreen_image_slide.dart';
 import 'package:visualizeit_slides_extension/commands/add_title_slide.dart';
 import 'package:visualizeit_slides_extension/commands/create_slideshow.dart';
 import 'package:visualizeit_slides_extension/slides_model.dart';
@@ -43,6 +46,9 @@ class SlidesExtension extends DefaultScriptingExtension implements ScriptingExte
   SlidesExtension(): super({
     CreateSlideshow.commandDefinition: CreateSlideshow.build,
     AddTitleSlide.commandDefinition: AddTitleSlide.build,
+    AddFullScreenImageSlide.commandDefinition: AddFullScreenImageSlide.build,
+    AddBulletsSlide.commandDefinition: AddBulletsSlide.build,
+    AddCodeSlide.commandDefinition: AddCodeSlide.build,
     ShowSlides.commandDefinition: ShowSlides.build
   });
 
