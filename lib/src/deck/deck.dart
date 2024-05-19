@@ -227,7 +227,7 @@ class _SlideIndex {
     required List<Slide> slides,
     bool fineRewind = false
   }) {
-    if (index <= 0) {
+    if (index <= 0 && (!fineRewind || subIndex == 0)) {
       return this;
     } else if (fineRewind && subIndex > 0) {
       return _SlideIndex(index, subIndex - 1);
