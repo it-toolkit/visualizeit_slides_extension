@@ -376,10 +376,10 @@ class SlideDeckState extends State<SlideDeck> {
       int diff = widget.currentSlideIndex - currentSlideIndex;
       if (diff > 0) {
         next();
-      } else if (diff < 0) {
-        print("XXX - Before ${_index.index} / ${_index.subIndex} || expected: ${widget.currentSlideIndex} || diff: $diff");
+      } else if (diff < 0 && widget.currentSlideIndex > 0) {
         previous();
-        print("XXX - After ${_index.index} / ${_index.subIndex} || current: $currentSlideIndex");
+      } else if (diff < 0) {
+        reset();
       }
     }
 
@@ -543,6 +543,18 @@ class SlideDeckState extends State<SlideDeck> {
         slides: widget.slides,
         fineRewind: widget.fineRewind
       ),
+      const _SlideArguments(
+        animateContents: false,
+        animateTransition: false,
+      ),
+    );
+  }
+
+  void reset() {
+    currentSlideIndex = 0;
+
+    _onChangeSlide(
+      const _SlideIndex(0, 0),
       const _SlideArguments(
         animateContents: false,
         animateTransition: false,
