@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
+import 'package:visualizeit_extensions/logging.dart';
 import 'package:visualizeit_slides_extension/src/deck/slide_config.dart';
 import 'package:visualizeit_slides_extension/src/deck/theme.dart';
 
 import '../transitions/transition.dart';
 import 'deck_controls.dart';
+
+final _logger = Logger("extension.slides}");
 
 /// Builds the content of a slide, when there are more than one sub-slide.
 typedef SubSlideWidgetBuilder = Widget Function(
@@ -374,13 +377,21 @@ class SlideDeckState extends State<SlideDeck> {
 
     if(!widget.includeDeckControls) {
       int diff = widget.currentSlideIndex - currentSlideIndex;
+
+      _logger.trace(() => "Current slide $currentSlideIndex [${_index.index}/${_index.subIndex}], expected: ${widget.currentSlideIndex} => diff: $diff");
+
       if (diff > 0) {
+        _logger.trace(() => "Go to next slide");
         next();
       } else if (diff < 0 && widget.currentSlideIndex > 0) {
+        _logger.trace(() => "Go to previous slide");
         previous();
       } else if (diff < 0) {
+        _logger.trace(() => "Go to first slide");
         reset();
       }
+
+      _logger.trace(() => "Current slide $currentSlideIndex [${_index.index}/${_index.subIndex}], expected: ${widget.currentSlideIndex} => diff: $diff");
     }
 
     // widget.onSlideDeckWidgetUpdate(oldWidget, widget, next, previous);
