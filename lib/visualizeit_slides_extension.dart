@@ -19,8 +19,6 @@ import 'src/deck/deck.dart';
 
 final _logger = Logger("extension.slides");
 
-const _extensionId = "slides-extension";
-
 class SlidesExtensionBuilder implements ExtensionBuilder {
   static const _docsLocationPath = "packages/visualizeit_slides_extension/assets/docs";
   static const _availableDocsLanguages = [LanguageCodes.en];
@@ -35,12 +33,12 @@ class SlidesExtensionBuilder implements ExtensionBuilder {
       for (final languageCode in _availableDocsLanguages) languageCode : '$_docsLocationPath/$languageCode.md'
     };
 
-    return Extension(_extensionId, extension, extension, markdownDocs);
+    return Extension(SlidesExtension.extensionId, extension, extension, markdownDocs);
   }
 }
 
 class SlidesExtension extends DefaultScriptingExtension implements ScriptingExtension, VisualizerExtension {
-  static const extensionId = "slides-extension";
+  static const extensionId = "slides";
   static const globalModelName = "$extensionId.model";
 
   SlidesExtension(): super({

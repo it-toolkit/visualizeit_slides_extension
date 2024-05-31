@@ -2,7 +2,7 @@
 
 This is the slides extension usage doc.
 
-Extension id: `slides-extension`
+Extension id: `slides`
 
 ## Available commands
 
