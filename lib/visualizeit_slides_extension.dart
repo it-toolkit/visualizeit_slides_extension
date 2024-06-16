@@ -3,8 +3,6 @@ library visualizeit_slides_extension;
 import 'package:flutter/material.dart';
 import 'package:visualizeit_extensions/common.dart';
 import 'package:visualizeit_extensions/logging.dart';
-import 'package:visualizeit_extensions/scripting.dart';
-import 'package:visualizeit_extensions/visualizer.dart';
 import 'package:visualizeit_extensions/extension.dart';
 import 'package:visualizeit_slides_extension/commands/add_bullets_slide.dart';
 import 'package:visualizeit_slides_extension/commands/add_code_slide.dart';
@@ -19,6 +17,14 @@ import 'src/deck/deck.dart';
 
 final _logger = Logger("extension.slides");
 
+final class SlidesExtension extends Extension {
+  static const extensionId = "slides";
+  static const globalModelName = "${SlidesExtension.extensionId}.model";
+
+  SlidesExtension._create({required super.markdownDocs, required super.extensionCore}): super.create(id: extensionId);
+}
+
+
 class SlidesExtensionBuilder implements ExtensionBuilder {
   static const _docsLocationPath = "packages/visualizeit_slides_extension/assets/docs";
   static const _availableDocsLanguages = [LanguageCodes.en];
@@ -27,21 +33,17 @@ class SlidesExtensionBuilder implements ExtensionBuilder {
   Future<Extension> build() async{
     _logger.trace(() => "Building slides extension");
     await SlickSlides.initialize();
-    var extension = SlidesExtension();
 
     final markdownDocs = {
       for (final languageCode in _availableDocsLanguages) languageCode : '$_docsLocationPath/$languageCode.md'
     };
 
-    return Extension(SlidesExtension.extensionId, extension, extension, markdownDocs);
+    return SlidesExtension._create(markdownDocs: markdownDocs, extensionCore: SlidesExtensionCore());
   }
 }
 
-class SlidesExtension extends DefaultScriptingExtension implements ScriptingExtension, VisualizerExtension {
-  static const extensionId = "slides";
-  static const globalModelName = "$extensionId.model";
-
-  SlidesExtension(): super({
+class SlidesExtensionCore extends SimpleExtensionCore{
+  SlidesExtensionCore(): super({
     CreateSlideshow.commandDefinition: CreateSlideshow.build,
     AddTitleSlide.commandDefinition: AddTitleSlide.build,
     AddFullScreenImageSlide.commandDefinition: AddFullScreenImageSlide.build,
