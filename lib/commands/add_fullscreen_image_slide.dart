@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:visualizeit_extensions/common.dart';
-import 'package:visualizeit_extensions/extension_helpers.dart';
+import 'package:visualizeit_extensions/scripting_extensions.dart';
 import 'package:visualizeit_extensions/scripting.dart';
 import 'package:visualizeit_slides_extension/slides_model.dart';
 import 'package:visualizeit_slides_extension/src/slides/full_screen_image.dart';
@@ -21,12 +20,12 @@ class AddFullScreenImageSlide extends ModelCommand {
   final String? title;
   final String? subtitle;
   final String imageUrl;
-  final String alignment;
+  final Alignment alignment;
 
   AddFullScreenImageSlide.build(RawCommand rawCommand):
     title = commandDefinition.getArg(name: "title", from: rawCommand),
     subtitle = commandDefinition.getArg(name: "subtitle", from: rawCommand),
-    alignment = commandDefinition.getArg(name: "alignment", from: rawCommand),
+    alignment = commandDefinition.getAlignmentArg(name: "alignment", from: rawCommand),
     imageUrl = commandDefinition.getArg(name: "imageUrl", from: rawCommand),
     super(SlidesExtension.globalModelName);
 
@@ -41,7 +40,7 @@ class AddFullScreenImageSlide extends ModelCommand {
     slidesModel.addSlide(FullScreenImageSlide(
       title: title,
       subtitle: subtitle,
-      alignment: parseAlignment(alignment),
+      alignment: alignment,
       image: NetworkImage(imgNetworkUrl)
     ));
 
