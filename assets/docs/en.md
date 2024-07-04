@@ -40,6 +40,20 @@ This command add a slide with a fullscreen background image.
 | title     | optional string | 2        | false    | null          | -           |
 | subtitle  | optional string | 3        | false    | null          | -           |
 
+Allowed alignment values:
+
+| Value        | 
+|--------------|
+| topLeft      |
+| topCenter    |
+| topRight     |
+| centerLeft   |
+| center       |
+| centerRight  |
+| bottomLeft   |
+| bottomCenter |
+| bottomRight  |
+
 ### add-bullets-slide
 
 This command add a slide with a bullet list. The bullets can be presented animated or not.
