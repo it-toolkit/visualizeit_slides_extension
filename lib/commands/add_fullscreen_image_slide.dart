@@ -3,6 +3,7 @@ import 'package:visualizeit_extensions/common.dart';
 import 'package:visualizeit_extensions/scripting_extensions.dart';
 import 'package:visualizeit_extensions/scripting.dart';
 import 'package:visualizeit_slides_extension/slides_model.dart';
+import 'package:visualizeit_slides_extension/src/common/images.dart';
 import 'package:visualizeit_slides_extension/src/slides/full_screen_image.dart';
 
 import '../visualizeit_slides_extension.dart';
@@ -33,15 +34,11 @@ class AddFullScreenImageSlide extends ModelCommand {
   Result call(Model model, CommandContext context) {
     final slidesModel = model as SlidesModel;
 
-    String imgNetworkUrl = imageUrl.startsWith("gdrive:")
-        ? "https://lh3.googleusercontent.com/d/${imageUrl.substring(7)}=w1000"
-        : imageUrl;
-
     slidesModel.addSlide(FullScreenImageSlide(
       title: title,
       subtitle: subtitle,
       alignment: alignment,
-      image: NetworkImage(imgNetworkUrl)
+      image: resolveImageProviderFor(imageUrl)
     ));
 
     return Result(model: slidesModel);

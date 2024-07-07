@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:visualizeit_extensions/common.dart';
 import 'package:visualizeit_extensions/scripting.dart';
 import 'package:visualizeit_slides_extension/slides_model.dart';
+import 'package:visualizeit_slides_extension/src/common/images.dart';
 import 'package:visualizeit_slides_extension/src/slides/bullets.dart';
 
 import '../visualizeit_slides_extension.dart';
@@ -36,16 +35,12 @@ class AddBulletsSlide extends ModelCommand {
   Result call(Model model, CommandContext context) {
     final slidesModel = model as SlidesModel;
 
-    String? imgNetworkUrl = imageUrl?.startsWith("gdrive:") == true
-        ? "https://lh3.googleusercontent.com/d/${imageUrl?.substring(7)}=w1000"
-        : imageUrl;
-
     slidesModel.addSlide(BulletsSlide(
       title: title,
       subtitle: subtitle,
       bullets: bullets,
       bulletByBullet: bulletByBullet,
-      image: imgNetworkUrl != null ? NetworkImage(imgNetworkUrl) : null
+      image: imageUrl != null ? resolveImageProviderFor(imageUrl!) : null
     ));
 
     return Result(model: slidesModel);
