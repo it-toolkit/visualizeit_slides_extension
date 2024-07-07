@@ -14,7 +14,7 @@ class ShowSlides extends ModelCommand {
 
   @override
   Result call(Model model, CommandContext context) {
-    final slidesModel = (model.clone()) as SlidesModel;
+    final slidesModel = model as SlidesModel;
     if(slidesModel.currentSlideIndex == 0) {
       slidesModel.withFramesDuration(slidesModel.maxSlideIndex);
     }

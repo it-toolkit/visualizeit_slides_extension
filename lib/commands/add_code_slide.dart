@@ -31,7 +31,7 @@ class AddCodeSlide extends ModelCommand {
 
   @override
   Result call(Model model, CommandContext context) {
-    final slidesModel = (model.clone()) as SlidesModel;
+    final slidesModel = model as SlidesModel;
 
     slidesModel.addSlide(AnimatedCodeSlide(
       title: title,

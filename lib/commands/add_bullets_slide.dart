@@ -34,7 +34,7 @@ class AddBulletsSlide extends ModelCommand {
 
   @override
   Result call(Model model, CommandContext context) {
-    final slidesModel = (model.clone()) as SlidesModel;
+    final slidesModel = model as SlidesModel;
 
     String? imgNetworkUrl = imageUrl?.startsWith("gdrive:") == true
         ? "https://lh3.googleusercontent.com/d/${imageUrl?.substring(7)}=w1000"
