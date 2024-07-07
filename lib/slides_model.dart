@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:visualizeit_extensions/common.dart';
 import 'package:visualizeit_slides_extension/src/deck/deck.dart';
 import 'package:visualizeit_slides_extension/visualizeit_slides_extension.dart';

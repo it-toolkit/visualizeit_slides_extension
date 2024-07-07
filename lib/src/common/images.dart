@@ -7,6 +7,7 @@ final _logger = Logger("extension.slides");
 
 enum Background {
   bricks ("bricks.jpg"),
+  // ignore: constant_identifier_names
   broken_egg ("broken-egg.jpg"),
   earth ("earth.jpg"),
   flower ("flower.jpg"),
@@ -15,6 +16,7 @@ enum Background {
   lion ("lion.jpg"),
   marguerite ("marguerite.jpg"),
   nature ("nature.jpg"),
+  // ignore: constant_identifier_names
   orion_nebula ("orion-nebula.jpg"),
   presentation ("presentation.jpg"),
   space ("space.jpg"),
