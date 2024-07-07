@@ -1,10 +1,7 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 import '../deck/deck.dart';
-import '../deck/theme.dart';
 import '../layouts/title.dart';
-import '../transitions/transition.dart';
 
 /// A slide that displays a title and subtitle centered on the slide.
 class TitleSlide extends Slide {
@@ -14,11 +11,11 @@ class TitleSlide extends Slide {
     String? subtitle,
     Alignment alignment = Alignment.center,
     WidgetBuilder? backgroundBuilder,
-    String? notes,
-    SlickTransition? transition,
-    SlideThemeData? theme,
-    Source? audioSource,
-    Duration? autoplayDuration,
+    super.notes,
+    super.transition,
+    super.theme,
+    super.audioSource,
+    super.autoplayDuration,
   }) : super(
           builder: (context) {
             return TitleLayout(
@@ -28,11 +25,6 @@ class TitleSlide extends Slide {
               background: backgroundBuilder?.call(context),
             );
           },
-          notes: notes,
-          transition: transition,
-          theme: theme,
-          audioSource: audioSource,
-          autoplayDuration: autoplayDuration,
         );
 
   /// Creates a slide that displays a title and subtitle centered on the slide.
@@ -43,11 +35,11 @@ class TitleSlide extends Slide {
     TextSpan? subtitle,
     Alignment alignment = Alignment.center,
     WidgetBuilder? backgroundBuilder,
-    String? notes,
-    SlickTransition? transition,
-    SlideThemeData? theme,
-    Source? audioSource,
-    Duration? autoplayDuration,
+    super.notes,
+    super.transition,
+    super.theme,
+    super.audioSource,
+    super.autoplayDuration,
   }) : super(
           builder: (context) {
             return TitleLayout(
@@ -57,10 +49,5 @@ class TitleSlide extends Slide {
               background: backgroundBuilder?.call(context),
             );
           },
-          notes: notes,
-          transition: transition,
-          theme: theme,
-          audioSource: audioSource,
-          autoplayDuration: autoplayDuration,
         );
 }

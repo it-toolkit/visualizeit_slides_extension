@@ -105,8 +105,7 @@ class _FadeThroughColorTransition extends StatefulWidget {
     required this.child,
     required this.color,
     required this.animation,
-    Key? key,
-  }) : super(key: key);
+  });
 
   final Widget child;
   final Color color;

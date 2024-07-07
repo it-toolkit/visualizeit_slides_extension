@@ -1,10 +1,7 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 import '../deck/deck.dart';
-import '../deck/theme.dart';
 import '../layouts/content.dart';
-import '../transitions/transition.dart';
 import '../widgets/bullets.dart';
 
 /// The position of an image in a [BulletsSlide].
@@ -29,11 +26,11 @@ class BulletsSlide extends Slide {
     BulletsImageLocation imageLocation = BulletsImageLocation.right,
     ImageProvider? image,
     WidgetBuilder? backgroundBuilder,
-    String? notes,
-    SlickTransition? transition,
-    SlideThemeData? theme,
-    Duration? autoplayDuration,
-    Source? audioSource,
+    super.notes,
+    super.transition,
+    super.theme,
+    super.autoplayDuration,
+    super.audioSource,
   }) : super.withSubSlides(
           builder: (context, index) {
             Widget content;
@@ -88,11 +85,6 @@ class BulletsSlide extends Slide {
             }
           },
           subSlideCount: bulletByBullet ? bullets.length + 1 : 1,
-          notes: notes,
-          transition: transition,
-          theme: theme,
-          autoplayDuration: autoplayDuration,
-          audioSource: audioSource,
         );
 
   /// Creates a slide that displays a list of bullet points based on [TextSpan]s.
@@ -106,11 +98,11 @@ class BulletsSlide extends Slide {
     BulletsImageLocation imageLocation = BulletsImageLocation.right,
     AssetImage? image,
     WidgetBuilder? backgroundBuilder,
-    String? notes,
-    SlickTransition? transition,
-    SlideThemeData? theme,
-    Duration? autoplayDuration,
-    Source? audioSource,
+    super.notes,
+    super.transition,
+    super.theme,
+    super.autoplayDuration,
+    super.audioSource,
   }) : super.withSubSlides(
           builder: (context, index) {
             Widget content;
@@ -165,10 +157,5 @@ class BulletsSlide extends Slide {
             }
           },
           subSlideCount: bulletByBullet ? bullets.length + 1 : 1,
-          notes: notes,
-          transition: transition,
-          theme: theme,
-          autoplayDuration: autoplayDuration,
-          audioSource: audioSource,
         );
 }

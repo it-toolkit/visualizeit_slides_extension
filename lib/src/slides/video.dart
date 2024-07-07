@@ -1,12 +1,9 @@
 import 'dart:async';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:video_player/video_player.dart';
 
 import '../deck/deck.dart';
-import '../deck/theme.dart';
 import '../layouts/video.dart';
-import '../transitions/transition.dart';
 
 /// A slide that displays a video.
 class VideoSlide extends Slide {
@@ -19,11 +16,11 @@ class VideoSlide extends Slide {
     required this.videoPlayerController,
     bool loop = false,
     Duration playAfterDuration = Duration.zero,
-    String? notes,
-    SlickTransition? transition,
-    final SlideThemeData? theme,
-    Duration? autoplayDuration,
-    Source? audioSource,
+    super.notes,
+    super.transition,
+    super.theme,
+    super.autoplayDuration,
+    super.audioSource,
   }) : super(
           builder: (context) {
             return VideoLayout(
@@ -42,10 +39,5 @@ class VideoSlide extends Slide {
           onExit: () async {
             await videoPlayerController.pause();
           },
-          notes: notes,
-          transition: transition,
-          theme: theme,
-          audioSource: audioSource,
-          autoplayDuration: autoplayDuration,
         );
 }

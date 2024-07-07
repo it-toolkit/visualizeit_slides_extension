@@ -1,11 +1,8 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 
 import '../deck/deck.dart';
-import '../deck/theme.dart';
 import '../layouts/person.dart';
-import '../transitions/transition.dart';
 
 /// A slide that displays information about a person. It can have a name, title,
 /// and an image.
@@ -16,12 +13,12 @@ class PersonSlide extends Slide {
     required String title,
     required String name,
     required ImageProvider image,
-    String? notes,
+    super.notes,
     WidgetBuilder? backgroundBuilder,
-    SlickTransition? transition,
-    final SlideThemeData? theme,
-    Duration? autoplayDuration,
-    Source? audioSource,
+    super.transition,
+    super.theme,
+    super.autoplayDuration,
+    super.audioSource,
   }) : super(
           builder: (context) {
             return PersonLayout(
@@ -39,11 +36,6 @@ class PersonSlide extends Slide {
               context,
             );
           },
-          notes: notes,
-          transition: transition,
-          theme: theme,
-          autoplayDuration: autoplayDuration,
-          audioSource: audioSource,
         );
 
   /// Creates a slide that displays information about a person. It can have a
@@ -53,12 +45,12 @@ class PersonSlide extends Slide {
     required TextSpan title,
     required TextSpan name,
     required ImageProvider image,
-    String? notes,
+    super.notes,
     WidgetBuilder? backgroundBuilder,
-    SlickTransition? transition,
-    final SlideThemeData? theme,
-    Duration? autoplayDuration,
-    Source? audioSource,
+    super.transition,
+    super.theme,
+    super.autoplayDuration,
+    super.audioSource,
   }) : super(
           builder: (context) {
             return PersonLayout(
@@ -76,10 +68,5 @@ class PersonSlide extends Slide {
               context,
             );
           },
-          notes: notes,
-          transition: transition,
-          theme: theme,
-          autoplayDuration: autoplayDuration,
-          audioSource: audioSource,
         );
 }

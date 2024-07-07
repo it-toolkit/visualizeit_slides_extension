@@ -1,10 +1,7 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 import '../deck/deck.dart';
-import '../deck/theme.dart';
 import '../layouts/content.dart';
-import '../transitions/transition.dart';
 import '../widgets/colored_code.dart';
 
 
@@ -34,11 +31,11 @@ class AnimatedCodeSlide extends Slide {
     required List<FormattedCode> formattedCode,
     String language = 'dart',
     WidgetBuilder? backgroundBuilder,
-    String? notes,
-    SlickTransition? transition,
-    SlideThemeData? theme,
-    Duration? autoplayDuration,
-    Source? audioSource,
+    super.notes,
+    super.transition,
+    super.theme,
+    super.autoplayDuration,
+    super.audioSource,
   }) : super.withSubSlides(
           builder: (context, index) {
             var highlightedLines = formattedCode[index].highlightedLines;
@@ -69,10 +66,5 @@ class AnimatedCodeSlide extends Slide {
             );
           },
           subSlideCount: formattedCode.length,
-          notes: notes,
-          transition: transition,
-          theme: theme,
-          autoplayDuration: autoplayDuration,
-          audioSource: audioSource,
         );
 }

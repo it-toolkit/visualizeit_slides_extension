@@ -1,10 +1,7 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 import '../deck/deck.dart';
-import '../deck/theme.dart';
 import '../layouts/title.dart';
-import '../transitions/transition.dart';
 
 
 /// A slide that displays a title and subtitle centered on the slide.
@@ -15,11 +12,11 @@ class FullScreenImageSlide extends Slide {
     String? title,
     String? subtitle,
     Alignment alignment = Alignment.center,
-    String? notes,
-    SlickTransition? transition,
-    final SlideThemeData? theme,
-    Duration? autoplayDuration,
-    Source? audioSource,
+    super.notes,
+    super.transition,
+    super.theme,
+    super.autoplayDuration,
+    super.audioSource,
   }) : super(
           builder: (context) {
             return TitleLayout(
@@ -38,11 +35,6 @@ class FullScreenImageSlide extends Slide {
               context,
             );
           },
-          notes: notes,
-          transition: transition,
-          theme: theme,
-          autoplayDuration: autoplayDuration,
-          audioSource: audioSource,
         );
 
   /// Creates a slide that displays a title and subtitle centered on the slide.
@@ -54,11 +46,11 @@ class FullScreenImageSlide extends Slide {
     TextSpan? subtitle,
     Alignment alignment = Alignment.center,
     WidgetBuilder? backgroundBuilder,
-    String? notes,
-    SlickTransition? transition,
-    final SlideThemeData? theme,
-    Duration? autoplayDuration,
-    Source? audioSource,
+    super.notes,
+    super.transition,
+    super.theme,
+    super.autoplayDuration,
+    super.audioSource,
   }) : super(
           builder: (context) {
             return TitleLayout(
@@ -77,10 +69,5 @@ class FullScreenImageSlide extends Slide {
               context,
             );
           },
-          notes: notes,
-          transition: transition,
-          theme: theme,
-          autoplayDuration: autoplayDuration,
-          audioSource: audioSource,
         );
 }
