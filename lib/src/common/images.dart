@@ -32,6 +32,19 @@ enum Background {
   const Background(this.filename);
 }
 
+enum Misc {
+  meeting("meeting.jpg"),
+  // ignore: constant_identifier_names
+  meeting_room("meeting-room.jpg"),
+  ok("ok.jpg"),
+  owl("owl.jpg"),
+  // ignore: constant_identifier_names
+  writing_desk("writing-desk.jpg");
+
+  final String filename;
+  const Misc(this.filename);
+}
+
 ImageProvider resolveImageProviderFor(String location) {
 
   if (location.startsWith("background:")) {
@@ -43,6 +56,14 @@ ImageProvider resolveImageProviderFor(String location) {
     }
   }
 
+  if (location.startsWith("misc:")) {
+    try {
+      final misc = Misc.values.byName(location.substring(5));
+      return AssetImage("assets/misc/${misc.filename}", package: "visualizeit_slides_extension");
+    } catch (e) {
+      _logger.error(() => "Cannot resolve image for location '$location': $e");
+    }
+  }
 
   String imgNetworkUrl = location.startsWith("gdrive:")
       ? "https://lh3.googleusercontent.com/d/${location.substring(7)}=w1000"

@@ -37,6 +37,7 @@ flutter:
      - assets/docs/
      - assets/
      - assets/backgrounds/
+     - assets/misc/
 
 
    fonts:
